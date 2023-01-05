@@ -2,7 +2,7 @@ package com.example.introductiontosql.service;
 
 import com.example.introductiontosql.component.RecordMapper;
 import com.example.introductiontosql.exeption.FacultyNotFoundException;
-import com.example.introductiontosql.model.Faculty;
+import com.example.introductiontosql.entity.Faculty;
 import com.example.introductiontosql.record.FacultyRecord;
 import com.example.introductiontosql.record.StudentRecord;
 import com.example.introductiontosql.repository.FacultyRepository;

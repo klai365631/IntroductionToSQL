@@ -1,8 +1,4 @@
-package com.example.introductiontosql.model;
-
-
-
-import net.bytebuddy.agent.builder.AgentBuilder;
+package com.example.introductiontosql.entity;
 
 import javax.persistence.*;
 import java.util.List;

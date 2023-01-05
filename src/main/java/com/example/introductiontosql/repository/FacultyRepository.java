@@ -1,6 +1,6 @@
 package com.example.introductiontosql.repository;
 
-import com.example.introductiontosql.model.Faculty;
+import com.example.introductiontosql.entity.Faculty;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

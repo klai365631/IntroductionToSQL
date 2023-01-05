@@ -1,7 +1,9 @@
 package com.example.introductiontosql.component;
 
-import com.example.introductiontosql.model.Faculty;
-import com.example.introductiontosql.model.Student;
+import com.example.introductiontosql.entity.Avatar;
+import com.example.introductiontosql.entity.Faculty;
+import com.example.introductiontosql.entity.Student;
+import com.example.introductiontosql.record.AvatarRecord;
 import com.example.introductiontosql.record.FacultyRecord;
 import com.example.introductiontosql.record.StudentRecord;
 import org.springframework.stereotype.Component;
@@ -17,6 +19,9 @@ public class RecordMapper {
         if (student.getFaculty() != null) {
             studentRecord.setFaculty(toRecord(student.getFaculty()));
         }
+        if (student.getAvatar() != null) {
+            studentRecord.setAvatar(toRecord(student.getAvatar()));
+        }
         return studentRecord;
     }
 
@@ -26,6 +31,15 @@ public class RecordMapper {
         facultyRecord.setName(faculty.getName());
         facultyRecord.setColor(faculty.getColor());
         return facultyRecord;
+    }
+
+    public AvatarRecord toRecord(Avatar avatar) {
+        return new AvatarRecord(
+                avatar.getId(),
+                avatar.getMediaType(),
+                null  //todo
+                );
+
     }
 
     public Student toEntity(StudentRecord studentRecord) {

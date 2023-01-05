@@ -1,12 +1,22 @@
 package com.example.introductiontosql.record;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+
 public class StudentRecord {
 
     private Long id;
+    @NotBlank(message = "Имя студента должно быть заполнено!")
     private String name;
+
+    @Min(value = 17,message="Минимальный возраст студента 17 лет!")
+    @Max(value = 25,message="Максимальный возраст студента 25 лет!")
     private int age;
 
     private FacultyRecord faculty;
+
+    private AvatarRecord avatar;
 
     public StudentRecord() {
     }
@@ -47,5 +57,13 @@ public class StudentRecord {
 
     public void setFaculty(FacultyRecord faculty) {
         this.faculty = faculty;
+    }
+
+    public AvatarRecord getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(AvatarRecord avatar) {
+        this.avatar = avatar;
     }
 }

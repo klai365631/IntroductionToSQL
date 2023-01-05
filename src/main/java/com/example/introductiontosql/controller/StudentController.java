@@ -2,13 +2,20 @@ package com.example.introductiontosql.controller;
 
 import com.example.introductiontosql.record.FacultyRecord;
 import com.example.introductiontosql.record.StudentRecord;
+import com.example.introductiontosql.service.AvatarService;
 import com.example.introductiontosql.service.StudentService;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import java.util.Collection;
+import java.util.List;
 
 @RestController
 @RequestMapping("/students")
+@Validated
 public class StudentController {
 
     private final StudentService studentService;
@@ -52,6 +59,32 @@ public class StudentController {
     public FacultyRecord getFacultyByStudent(@PathVariable long id) {
         return studentService.getFacultyByStudent(id);
     }
+
+    @PatchMapping("/{id}/avatar")
+    public StudentRecord patchStudentAvatar(@PathVariable long id,
+                             @RequestParam("avatarId") long avatarId) {
+       return studentService.patchStudentAvatar(id, avatarId);
+
+    }
+
+    @GetMapping("/totalCount")
+    public int totalCountOfStudents() {
+        return studentService.totalCountOfStudents();
+    }
+
+    @GetMapping("/averageAge")
+    public double averageAgeOfStudents () {
+        return studentService.averageAgeOfStudents();
+    }
+
+    @GetMapping("/lastStudents")
+    public List<StudentRecord> lastStudents(@RequestParam @Min(1) @Max(10) int count) {
+        return studentService.lastStudents(count);
+    }
+
+
+
+
 
 
 
